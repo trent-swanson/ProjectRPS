@@ -70,22 +70,30 @@ public class TurnManager : MonoBehaviour {
                 {
                     if (Input.GetKeyDown(KeyCode.A))
                     {
-                        if(playerOneLastActions[playerOneLastActions.Count -1] != (int)PlayerChoice.PARRY)
+                        if (playerOneLastActions.Count < 1)
+                            playerOneNextAction = (int)PlayerChoice.PARRY;
+                        else if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.PARRY)
                             playerOneNextAction = (int)PlayerChoice.PARRY;
                     }
                     else if (Input.GetKeyDown(KeyCode.W))
                     {
-                        if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.ATTACK)
+                        if (playerOneLastActions.Count < 1)
+                            playerOneNextAction = (int)PlayerChoice.ATTACK;
+                        else if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.ATTACK)
                             playerOneNextAction = (int)PlayerChoice.ATTACK;
                     }
                     else if (Input.GetKeyDown(KeyCode.D))
                     {
-                        if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.LUNGE)
+                        if (playerOneLastActions.Count < 1)
+                            playerOneNextAction = (int)PlayerChoice.LUNGE;
+                        else if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.LUNGE)
                             playerOneNextAction = (int)PlayerChoice.LUNGE;
                     }
                     else if (Input.GetKeyDown(KeyCode.S))
                     {
-                        if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.BLOCK)
+                        if (playerOneLastActions.Count < 1)
+                            playerOneNextAction = (int)PlayerChoice.BLOCK;
+                        else if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.BLOCK)
                             playerOneNextAction = (int)PlayerChoice.BLOCK;
                     }
                 }
@@ -93,22 +101,30 @@ public class TurnManager : MonoBehaviour {
                 {
                     if (Input.GetKeyDown(KeyCode.RightArrow))
                     {
-                        if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.PARRY)
+                        if (playerTwoLastActions.Count < 1)
+                            playerTwoNextAction = (int)PlayerChoice.PARRY;
+                        else if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.PARRY)
                             playerTwoNextAction = (int)PlayerChoice.PARRY;
                     }
                     else if (Input.GetKeyDown(KeyCode.UpArrow))
                     {
-                        if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.ATTACK)
+                        if (playerTwoLastActions.Count < 1)
+                            playerTwoNextAction = (int)PlayerChoice.ATTACK;
+                        else if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.ATTACK)
                             playerTwoNextAction = (int)PlayerChoice.ATTACK;
                     }
                     else if (Input.GetKeyDown(KeyCode.LeftArrow))
                     {
-                        if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.LUNGE)
+                        if (playerTwoLastActions.Count < 1)
+                            playerTwoNextAction = (int)PlayerChoice.LUNGE;
+                        else if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.LUNGE)
                             playerTwoNextAction = (int)PlayerChoice.LUNGE;
                     }
                     else if (Input.GetKeyDown(KeyCode.DownArrow))
                     {
-                        if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.BLOCK)
+                        if (playerTwoLastActions.Count < 1)
+                            playerTwoNextAction = (int)PlayerChoice.BLOCK;
+                        else if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.BLOCK)
                             playerTwoNextAction = (int)PlayerChoice.BLOCK;
                     }
                 }
