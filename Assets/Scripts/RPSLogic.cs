@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RPSLogic : MonoBehaviour
+public class RPSLogic
 {
     [HideInInspector]
     public int[,] OutCome = new int[5,5] { {0,2,1,0,2 }, 
