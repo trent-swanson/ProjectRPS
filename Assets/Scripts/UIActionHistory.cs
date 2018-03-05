@@ -8,12 +8,16 @@ public class UIActionHistory : MonoBehaviour {
 	TurnManager turnManager;
 	public GameObject[] p1Actions;
 	public GameObject[] p2Actions;
+	public GameObject p1Options;
+	public GameObject p2Options;
 
 	void Start() {
 		turnManager = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TurnManager> ();
+		OpenPlayerOptions ();
 	}
 
 	public void UpdateActionHistory() {
+		ClosePlayerOptions ();
 		for (int i = 0; i < turnManager.playerOneLastActions.Count; i++) {
 			p1Actions [i].SetActive (true);
 			if (turnManager.playerOneLastActions[i] == 0) {
@@ -43,5 +47,14 @@ public class UIActionHistory : MonoBehaviour {
 				p2Actions [i].transform.GetChild (0).GetComponent<Text>().text = "Nothing";
 			}
 		}
+	}
+
+	public void OpenPlayerOptions() {
+		p1Options.SetActive (true);
+		p2Options.SetActive (true);
+	}
+	public void ClosePlayerOptions() {
+		p1Options.SetActive (false);
+		p2Options.SetActive (false);
 	}
 }
