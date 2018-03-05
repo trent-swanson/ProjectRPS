@@ -115,11 +115,12 @@ public class TurnManager : MonoBehaviour {
         }
     }
 
-    int getHealthP1() { return playerOneHealth; }
-    int getHealthP2() { return playerTwoHealth; }
+    public int getHealthP1() { return playerOneHealth; }
+    public int getHealthP2() { return playerTwoHealth; }
+    public float getCurrentTurnTime() { return turnTimer; }
 
     public Canvas canvas;
-    public float MAX_TURN_TIME;
+    public float MAX_TURN_TIME = 10;
     public float TIME_BETWEEN_TURNS;
     public int MAX_PLAYER_HEALTH;
     public int playerOneNextAction;
