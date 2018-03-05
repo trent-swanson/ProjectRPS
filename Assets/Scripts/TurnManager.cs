@@ -22,7 +22,9 @@ public class TurnManager : MonoBehaviour {
         playerOneHealth = MAX_PLAYER_HEALTH;
         playerTwoHealth = MAX_PLAYER_HEALTH;
         timerBetweenTurns = 0;
-	}
+        playerOneNextAction = (int)PlayerChoice.NOTHING;
+        playerTwoNextAction = (int)PlayerChoice.NOTHING;
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -59,7 +61,7 @@ public class TurnManager : MonoBehaviour {
             else
             { 
                 //right at the start of the turn display the player action wheel
-                if(timerBetweenTurns == TIME_BETWEEN_TURNS) {
+                if(turnTimer == MAX_TURN_TIME) {
                     if (canvas != null)
                         canvas.GetComponent<UIActionHistory>().OpenPlayerOptions();
                 }
