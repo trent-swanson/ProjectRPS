@@ -32,11 +32,12 @@ public class TurnManager : MonoBehaviour {
             //TODO: add the code for displaying the 'animations
             //do the stuff 'animation' stuff
             timerBetweenTurns -= Time.deltaTime;
+            turnTimer = MAX_TURN_TIME;
         }
         else {
             if (turnTimer < 0 || (playerOneNextAction != (int)PlayerChoice.NOTHING && playerTwoNextAction != (int)PlayerChoice.NOTHING))
             {
-                turnTimer = MAX_TURN_TIME;
+                turnTimer = 0;
                 //call the RPSlogics functionality to get what happened
                 if ((RPSLogic.ReturnOutcome(playerOneNextAction, playerTwoNextAction)) == 1)
                 {
