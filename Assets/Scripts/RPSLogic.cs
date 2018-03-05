@@ -5,16 +5,6 @@ using UnityEngine;
 public class RPSLogic : MonoBehaviour
 {
     [HideInInspector]
-    public enum PlayerChoice
-    {
-        ATTACK = 0,
-        LUNGE,
-        PARRY,
-        BLOCK,
-        NOTHING,
-        ITEM_COUNT
-    }
-
     public int[,] OutCome = new int[5,5] { {0,2,1,0,2 }, 
                                            {1,0,2,0,2 },
                                            {2,1,0,0,2 },
@@ -33,5 +23,8 @@ public class RPSLogic : MonoBehaviour
 		
 	}
 
-   
+    public int ReturnOutcome(int playerOneAction, int PlayerTwoAction)
+    {
+        return (OutCome[playerOneAction, PlayerTwoAction]);
+    }
 }
