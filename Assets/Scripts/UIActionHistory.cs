@@ -10,10 +10,28 @@ public class UIActionHistory : MonoBehaviour {
 	public GameObject[] p2Actions;
 	public GameObject p1Options;
 	public GameObject p2Options;
+	public GameObject timerObject;
+	public Sprite[] timerSprites;
+	float timer;
+	int currentTime;
 
 	void Start() {
 		turnManager = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TurnManager> ();
+		timer = 1;
+		currentTime = Mathf.RoundToInt(turnManager.getCurrentTurnTime());
 		OpenPlayerOptions ();
+	}
+
+	void Update() {
+		timer -= Time.deltaTime;
+		if (timer <= 0) {
+			timer = 1;
+			currentTime--;
+			timerObject.GetComponent<Image> ().sprite = timerSprites [currentTime];
+		}
+		if (currentTime <= 0) {
+			currentTime = Mathf.RoundToInt(turnManager.getCurrentTurnTime() + 1);
+		}
 	}
 
 	public void UpdateActionHistory() {

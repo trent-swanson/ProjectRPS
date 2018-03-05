@@ -51,9 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240438d96562fe340912668c9b3a2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MAX_PLAYER_HEALTH: 0
-  MAX_TURN_TIME: 0
-  playerOneLastActions: 
-  playerTwoLastActions: 
+  canvas: {fileID: 0}
+  MAX_TURN_TIME: 10
+  TIME_BETWEEN_TURNS: 10
+  MAX_PLAYER_HEALTH: 4
   playerOneNextAction: 0
   playerTwoNextAction: 0
+  playerOneLastActions: 
+  playerTwoLastActions: 
