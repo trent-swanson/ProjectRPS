@@ -32,7 +32,7 @@ public class TurnManager : MonoBehaviour {
             timerBetweenTurns -= Time.deltaTime;
         }
         else {
-            if (turnTimer >= 0 || (playerOneNextAction != (int)PlayerChoice.NOTHING && playerTwoNextAction != (int)PlayerChoice.NOTHING))
+            if (turnTimer < 0 || (playerOneNextAction != (int)PlayerChoice.NOTHING && playerTwoNextAction != (int)PlayerChoice.NOTHING))
             {
                 turnTimer = MAX_TURN_TIME;
                 //call the RPSlogics functionality to get what happened
