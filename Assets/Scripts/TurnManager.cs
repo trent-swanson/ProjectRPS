@@ -209,11 +209,15 @@ public class TurnManager : MonoBehaviour {
                     }
                     else if (Input.GetKeyDown(KeyCode.DownArrow))
                     {
-                        if (playerTwoLastActions.Count < 1)
+                        if (playerTwoLastActions.Count < 1) {
                             playerTwoNextAction = (int)PlayerChoice.BLOCK;
-                        else if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.BLOCK)
-                            playerTwoNextAction = (int)PlayerChoice.BLOCK;
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(2);
                     }
+                    else if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.BLOCK) {
+                            playerTwoNextAction = (int)PlayerChoice.BLOCK;
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(2);
+                    }
+                }
                 }
                 turnTimer -= Time.deltaTime;
             }
