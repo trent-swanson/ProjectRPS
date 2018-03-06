@@ -89,55 +89,84 @@ public class TurnManager : MonoBehaviour {
                 {
                     if (Input.GetKeyDown(KeyCode.A))
                     {
-                        if (playerOneLastActions.Count < 1)
+                        if (playerOneLastActions.Count < 1) { 
                             playerOneNextAction = (int)PlayerChoice.PARRY;
-                        else if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.PARRY)
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(1);
+                        }
+                    else if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.PARRY) { 
                             playerOneNextAction = (int)PlayerChoice.PARRY;
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(1);
+                        }
                     }
                     else if (Input.GetKeyDown(KeyCode.W))
                     {
-                        if (playerOneLastActions.Count < 1)
+                        if (playerOneLastActions.Count < 1) {
                             playerOneNextAction = (int)PlayerChoice.ATTACK;
-                        else if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.ATTACK)
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(1);
+                        }
+                    else if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.ATTACK) { 
                             playerOneNextAction = (int)PlayerChoice.ATTACK;
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(1);
+                        }
                     }
                     else if (Input.GetKeyDown(KeyCode.D))
                     {
-                        if (playerOneLastActions.Count < 1)
+                        if (playerOneLastActions.Count < 1) {
                             playerOneNextAction = (int)PlayerChoice.LUNGE;
-                        else if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.LUNGE)
-                            playerOneNextAction = (int)PlayerChoice.LUNGE;
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(1);
+                        }
+                    else if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.LUNGE) {
+                        playerOneNextAction = (int)PlayerChoice.LUNGE;
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(1);
+                        }
                     }
                     else if (Input.GetKeyDown(KeyCode.S))
                     {
-                        if (playerOneLastActions.Count < 1)
+                        if (playerOneLastActions.Count < 1) {
                             playerOneNextAction = (int)PlayerChoice.BLOCK;
-                        else if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.BLOCK)
-                            playerOneNextAction = (int)PlayerChoice.BLOCK;
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(1);
+                        }
+                    else if (playerOneLastActions[playerOneLastActions.Count - 1] != (int)PlayerChoice.BLOCK) {
+                        playerOneNextAction = (int)PlayerChoice.BLOCK;
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(1);
+                        }
                     }
                 }
                 if (playerTwoNextAction == (int)PlayerChoice.NOTHING)
                 {
                     if (Input.GetKeyDown(KeyCode.RightArrow))
                     {
-                        if (playerTwoLastActions.Count < 1)
+                        if (playerTwoLastActions.Count < 1) {
                             playerTwoNextAction = (int)PlayerChoice.PARRY;
-                        else if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.PARRY)
-                            playerTwoNextAction = (int)PlayerChoice.PARRY;
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(2);
+                        }
+                    else if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.PARRY)
+                    {
+                        playerTwoNextAction = (int)PlayerChoice.PARRY;
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(2);
+                    }
                     }
                     else if (Input.GetKeyDown(KeyCode.UpArrow))
                     {
-                        if (playerTwoLastActions.Count < 1)
+                        if (playerTwoLastActions.Count < 1) {
                             playerTwoNextAction = (int)PlayerChoice.ATTACK;
-                        else if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.ATTACK)
-                            playerTwoNextAction = (int)PlayerChoice.ATTACK;
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(2);
+                        }
+                    else if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.ATTACK) {
+                        playerTwoNextAction = (int)PlayerChoice.ATTACK;
+                        canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(2);
+                    }
                     }
                     else if (Input.GetKeyDown(KeyCode.LeftArrow))
                     {
-                        if (playerTwoLastActions.Count < 1)
+                        if (playerTwoLastActions.Count < 1) {
                             playerTwoNextAction = (int)PlayerChoice.LUNGE;
-                        else if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.LUNGE)
+                            canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(2);
+                        }
+                        else if (playerTwoLastActions[playerTwoLastActions.Count - 1] != (int)PlayerChoice.LUNGE) {
                             playerTwoNextAction = (int)PlayerChoice.LUNGE;
+                            canvas.GetComponent<UIActionHistory>().ClosePlayerOptions(2);
+                        }
                     }
                     else if (Input.GetKeyDown(KeyCode.DownArrow))
                     {
