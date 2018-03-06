@@ -39,11 +39,17 @@ public class UIActionHistory : MonoBehaviour {
 		}
 
 		for (int i = 0; i < p1Actions.Length; i++) {
-			p1Actions [i].GetComponent<Image> ().sprite = historySprites[turnManager.playerOneLastActions [turnManager.playerOneLastActions.Count - (i + 1)]];
+			//Debug.Log (turnManager.playerOneLastActions.Count - (i + 1));
+			if (p1Actions [i].activeSelf == true) {
+				p1Actions [i].GetComponent<Image> ().sprite = historySprites [turnManager.playerOneLastActions [turnManager.playerOneLastActions.Count - (i + 1)]];
+			}
+
 		}
 
 		for (int i = 0; i < p2Actions.Length; i++) {
-			p2Actions [i].GetComponent<Image> ().sprite = historySprites[turnManager.playerTwoLastActions [turnManager.playerTwoLastActions.Count - (i + 1)]];
+			if (p2Actions [i].activeSelf == true) {
+				p2Actions [i].GetComponent<Image> ().sprite = historySprites [turnManager.playerTwoLastActions [turnManager.playerTwoLastActions.Count - (i + 1)]];
+			}
 		}
 	}
 

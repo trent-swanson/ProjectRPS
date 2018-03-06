@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2a8a26bd30b954240bf0c106e04437c6, type: 3}
-  m_Color: {r: 0, g: 0.46206903, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f8e21a1c40a185e408ef4162a79b33b5, type: 3}
+  m_Color: {r: 0.41960785, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 8.19, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
