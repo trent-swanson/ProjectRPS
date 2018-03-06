@@ -71,11 +71,11 @@ public class TurnManager : MonoBehaviour {
             {
                 //reset the player sprites to the idle
                 if (Player1 != null) {
-                    if (Player1.GetComponent<Image>().sprite != spritesP1[(int)PlayerChoice.NOTHING])
+                    if (Player1.GetComponent<Image>().sprite != null)
                         Player1.GetComponent<Image>().sprite = spritesP1[(int)PlayerChoice.NOTHING];
                 }
                 if (Player1 != null) {
-                    if (Player2.GetComponent<Image>().sprite != spritesP2[(int)PlayerChoice.NOTHING])
+                    if (Player2.GetComponent<Image>().sprite != null)
                         Player2.GetComponent<Image>().sprite = spritesP2[(int)PlayerChoice.NOTHING];
                 }
                 //right at the start of the turn display the player action wheel
