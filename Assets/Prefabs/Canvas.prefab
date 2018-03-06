@@ -695,7 +695,7 @@ AudioSource:
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
-  BypassListenerEffects: 0
+  BypassListenerEffects: 1
   BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
@@ -2141,8 +2141,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0b16ffb64c6a1674a948d0d84d5f8a7c, type: 3}
   - {fileID: 21300000, guid: 362752d7ffb9ac14fb43178f5ea7a809, type: 3}
   - {fileID: 21300000, guid: c70349f0cd318c244a4d40521c98e1dd, type: 3}
-  - {fileID: 21300000, guid: 49abe0905f62e4f4fb091812871e236c, type: 3}
-  tickTock: {fileID: 82862835737225878}
+  - {fileID: 21300000, guid: ab7d3162713b53f42bc64ef4fae39a1b, type: 3}
+  tickTock: {fileID: 8300000, guid: fee126deaf1b0e946bdd87e41e762402, type: 3}
+  longDong: {fileID: 8300000, guid: 5e3694347cb16f14da2ea28d6338806e, type: 3}
+  timerAudio: {fileID: 82862835737225878}
 --- !u!222 &222007580804377150
 CanvasRenderer:
   m_ObjectHideFlags: 1

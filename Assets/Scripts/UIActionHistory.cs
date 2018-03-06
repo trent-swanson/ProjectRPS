@@ -16,7 +16,8 @@ public class UIActionHistory : MonoBehaviour {
 	int currentTime;
 	int activeHistory;
 
-	public AudioSource tickTock;
+	public AudioClip tickTock, longDong;
+	public AudioSource timerAudio;
 
 	void Start() {
 		turnManager = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TurnManager> ();
@@ -27,9 +28,14 @@ public class UIActionHistory : MonoBehaviour {
 	void Update() {
 		currentTime = (int)turnManager.getCurrentTurnTime ();
 		if (currentTime < 11) {
-			if (!tickTock.isPlaying) {
-				tickTock.loop = true;
-				tickTock.Play ();
+			if (currentTime <= 0) {
+				timerAudio.loop = false;
+				timerAudio.clip = longDong;
+				timerAudio.Play ();
+			} else if (!timerAudio.isPlaying && currentTime != 0) {
+				timerAudio.loop = true;
+				timerAudio.clip = tickTock;
+				timerAudio.Play ();
 			}
 			timerObject.GetComponent<Image> ().sprite = timerSprites [currentTime];
 		}
