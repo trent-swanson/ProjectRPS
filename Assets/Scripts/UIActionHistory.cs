@@ -55,4 +55,11 @@ public class UIActionHistory : MonoBehaviour {
 		p1Options.SetActive (false);
 		p2Options.SetActive (false);
 	}
+	public void ClosePlayerOptions(int playerOptions) {
+		if (playerOptions == 1) {
+			p1Options.SetActive (false);
+		} else if (playerOptions == 2) {
+			p2Options.SetActive (false);
+		}
+	}
 }
