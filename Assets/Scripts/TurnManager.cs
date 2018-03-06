@@ -32,7 +32,6 @@ public class TurnManager : MonoBehaviour {
 
         if (timerBetweenTurns > 0)
         {
-            //TODO: add the code for displaying the 'animations'
             if ((timerBetweenTurns < TIME_BETWEEN_TURNS * 0.75) && (lastTookDamage == 1))
             {
                 Player1.GetComponent<SpriteRenderer>().sprite = spritesP1[(int)PlayerChoice.ITEM_COUNT];
@@ -40,7 +39,6 @@ public class TurnManager : MonoBehaviour {
 					hitSound = true;
 					sound.loop = false;
 					sound.PlayOneShot (sound.clip);
-					Debug.Log ("hit");
 				}
             }
             if ((timerBetweenTurns < TIME_BETWEEN_TURNS * 0.75) && (lastTookDamage == 2))
@@ -50,29 +48,28 @@ public class TurnManager : MonoBehaviour {
 					hitSound = true;
 					sound.loop = false;
 					sound.PlayOneShot (sound.clip);
-					Debug.Log ("hit 2");
 				}
             }
             timerBetweenTurns -= Time.deltaTime;
             turnTimer = MAX_TURN_TIME;
         }
 
-        //check if either player has zero health
-        if (playerOneHealth < 1) {
-            //set the winner to player 2
-            RPSLogic.winner = 2;
-            //change scene
-            SceneManager.LoadScene("winScreen");
-        }
-        if (playerTwoHealth < 1)
+        if(timerBetweenTurns <= 0)
         {
-            //set the winner to player 1
-            RPSLogic.winner = 1;
-            //change scene
-            SceneManager.LoadScene("winScreen");
-        }
+            //check if either player has zero health
+            if (playerOneHealth < 1) {
+                //set the winner to player 2
+                RPSLogic.winner = 2;
+                //change scene
+                SceneManager.LoadScene("winScreen");
+            }
+            if (playerTwoHealth < 1) {
+                //set the winner to player 1
+                RPSLogic.winner = 1;
+                //change scene
+                SceneManager.LoadScene("winScreen");
+            }
 
-        if(timerBetweenTurns <= 0) {
             if (turnTimer < 0 || (playerOneNextAction != (int)PlayerChoice.NOTHING && playerTwoNextAction != (int)PlayerChoice.NOTHING)) {
                 turnTimer = 0;
                 //call the RPSlogics functionality to get what happened
