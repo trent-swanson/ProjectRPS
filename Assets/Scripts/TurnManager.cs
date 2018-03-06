@@ -24,6 +24,7 @@ public class TurnManager : MonoBehaviour {
         timerBetweenTurns = 0;
         playerOneNextAction = (int)PlayerChoice.NOTHING;
         playerTwoNextAction = (int)PlayerChoice.NOTHING;
+        sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,10 +36,12 @@ public class TurnManager : MonoBehaviour {
             if ((timerBetweenTurns < TIME_BETWEEN_TURNS * 0.75) && (lastTookDamage == 1))
             {
                 Player1.GetComponent<SpriteRenderer>().sprite = spritesP1[(int)PlayerChoice.ITEM_COUNT];
+                sound.Play();
             }
             if ((timerBetweenTurns < TIME_BETWEEN_TURNS * 0.75) && (lastTookDamage == 2))
             {
                 Player2.GetComponent<SpriteRenderer>().sprite = spritesP2[(int)PlayerChoice.ITEM_COUNT];
+                sound.Play();
             }
             timerBetweenTurns -= Time.deltaTime;
             turnTimer = MAX_TURN_TIME;
@@ -210,6 +213,7 @@ public class TurnManager : MonoBehaviour {
     public int getHealthP2() { return playerTwoHealth; }
     public float getCurrentTurnTime() { return turnTimer; }
 
+    public AudioSource sound;
     public Canvas canvas;
     public GameObject Player1;
     public GameObject Player2;
