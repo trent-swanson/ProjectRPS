@@ -28,18 +28,22 @@ public class TurnManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        // do the quote animations unquote
-        if (timerBetweenTurns > 0) {
+
+        if (timerBetweenTurns > 0)
+        {
             //TODO: add the code for displaying the 'animations'
-            if ((timerBetweenTurns < MAX_TURN_TIME/2) && (lastTookDamage == 1)) {
+            if ((timerBetweenTurns < MAX_TURN_TIME / 2) && (lastTookDamage == 1))
+            {
                 Player1.GetComponent<SpriteRenderer>().sprite = spritesP1[(int)PlayerChoice.ITEM_COUNT];
             }
-            if ((timerBetweenTurns < MAX_TURN_TIME / 2) && (lastTookDamage == 2)) {
+            if ((timerBetweenTurns < MAX_TURN_TIME / 2) && (lastTookDamage == 2))
+            {
                 Player2.GetComponent<SpriteRenderer>().sprite = spritesP2[(int)PlayerChoice.ITEM_COUNT];
             }
             timerBetweenTurns -= Time.deltaTime;
             turnTimer = MAX_TURN_TIME;
         }
+
         //check if either player has zero health
         if (playerOneHealth < 1) {
             //set the winner to player 2
@@ -52,7 +56,8 @@ public class TurnManager : MonoBehaviour {
             RPSLogic.winner = 1;
             //change scene
         }
-        else {
+
+        if(timerBetweenTurns <= 0) {
             if (turnTimer < 0 || (playerOneNextAction != (int)PlayerChoice.NOTHING && playerTwoNextAction != (int)PlayerChoice.NOTHING)) {
                 turnTimer = 0;
                 //call the RPSlogics functionality to get what happened
