@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class TurnManager : MonoBehaviour {
 
     [HideInInspector]
@@ -62,12 +62,14 @@ public class TurnManager : MonoBehaviour {
             //set the winner to player 2
             RPSLogic.winner = 2;
             //change scene
+            SceneManager.LoadScene("winScreen");
         }
         if (playerTwoHealth < 1)
         {
             //set the winner to player 1
             RPSLogic.winner = 1;
             //change scene
+            SceneManager.LoadScene("winScreen");
         }
 
         if(timerBetweenTurns <= 0) {
