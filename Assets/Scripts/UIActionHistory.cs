@@ -76,6 +76,9 @@ public class UIActionHistory : MonoBehaviour {
 	public void OpenPlayerOptions() {
 		p1Options.SetActive (true);
 		p2Options.SetActive (true);
+		if (turnManager.playerOneLastActions.Count > 0) {
+			LastActionChosen ();
+		}
 	}
 	public void ClosePlayerOptions() {
 		p1Options.SetActive (false);
@@ -86,6 +89,73 @@ public class UIActionHistory : MonoBehaviour {
 			p1Options.SetActive (false);
 		} else if (playerOptions == 2) {
 			p2Options.SetActive (false);
+		}
+	}
+
+	void LastActionChosen() {
+		for (int i = 0; i < p1Options.transform.childCount; i++) {
+			Image tempImage = p1Options.transform.GetChild (i).GetComponent<Image> ();
+			Color c = tempImage.color;
+			c.a = 1f;
+			tempImage.color = c;
+		}
+		for (int i = 0; i < p2Options.transform.childCount; i++) {
+			Image tempImage = p2Options.transform.GetChild (i).GetComponent<Image> ();
+			Color c = tempImage.color;
+			c.a = 1f;
+			tempImage.color = c;
+		}
+
+		//player 1
+		if (turnManager.playerOneLastActions[turnManager.playerOneLastActions.Count - 1] == 0) {
+			Image tempImage = p1Options.transform.GetChild (0).GetComponent<Image> ();
+			Color c = tempImage.color;
+			c.a = 0.5f;
+			tempImage.color = c;
+		}
+		if (turnManager.playerOneLastActions[turnManager.playerOneLastActions.Count - 1] == 1) {
+			Image tempImage = p1Options.transform.GetChild (2).GetComponent<Image> ();
+			Color c = tempImage.color;
+			c.a = 0.5f;
+			tempImage.color = c;
+		}
+		if (turnManager.playerOneLastActions[turnManager.playerOneLastActions.Count - 1] == 2) {
+			Image tempImage = p1Options.transform.GetChild (3).GetComponent<Image> ();
+			Color c = tempImage.color;
+			c.a = 0.5f;
+			tempImage.color = c;
+		}
+		if (turnManager.playerOneLastActions[turnManager.playerOneLastActions.Count - 1] == 3) {
+			Image tempImage = p1Options.transform.GetChild (1).GetComponent<Image> ();
+			Color c = tempImage.color;
+			c.a = 0.5f;
+			tempImage.color = c;
+		}
+
+		//player 2
+		if (turnManager.playerTwoLastActions[turnManager.playerTwoLastActions.Count - 1] == 0) {
+			Image tempImage = p2Options.transform.GetChild (0).GetComponent<Image> ();
+			Color c = tempImage.color;
+			c.a = 0.5f;
+			tempImage.color = c;
+		}
+		if (turnManager.playerTwoLastActions[turnManager.playerTwoLastActions.Count - 1] == 1) {
+			Image tempImage = p2Options.transform.GetChild (2).GetComponent<Image> ();
+			Color c = tempImage.color;
+			c.a = 0.5f;
+			tempImage.color = c;
+		}
+		if (turnManager.playerTwoLastActions[turnManager.playerTwoLastActions.Count - 1] == 2) {
+			Image tempImage = p2Options.transform.GetChild (3).GetComponent<Image> ();
+			Color c = tempImage.color;
+			c.a = 0.5f;
+			tempImage.color = c;
+		}
+		if (turnManager.playerTwoLastActions[turnManager.playerTwoLastActions.Count - 1] == 3) {
+			Image tempImage = p2Options.transform.GetChild (1).GetComponent<Image> ();
+			Color c = tempImage.color;
+			c.a = 0.5f;
+			tempImage.color = c;
 		}
 	}
 }
