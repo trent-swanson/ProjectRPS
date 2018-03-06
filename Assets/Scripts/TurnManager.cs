@@ -26,8 +26,21 @@ public class TurnManager : MonoBehaviour {
         playerTwoNextAction = (int)PlayerChoice.NOTHING;
     }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update() {
+        //check if either player has zero health
+        if (playerOneHealth < 1) {
+            //set the winner to player 2
+            RPSLogic.winner = 2;
+            //change scene
+        }
+        if (playerTwoHealth < 1)
+        {
+            //set the winner to player 1
+            RPSLogic.winner = 1;
+            //change scene
+        }
+
         if (timerBetweenTurns > 0) {
             //TODO: add the code for displaying the 'animations
             //do the stuff 'animation' stuff
@@ -38,6 +51,7 @@ public class TurnManager : MonoBehaviour {
             if (turnTimer < 0 || (playerOneNextAction != (int)PlayerChoice.NOTHING && playerTwoNextAction != (int)PlayerChoice.NOTHING))
             {
                 turnTimer = 0;
+                canvas.GetComponent<UIActionHistory>()tickTock.Stop();
                 //call the RPSlogics functionality to get what happened
                 if ((RPSLogic.ReturnOutcome(playerOneNextAction, playerTwoNextAction)) == 2)
                 {
