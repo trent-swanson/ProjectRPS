@@ -41,7 +41,11 @@ public class UIHealthBar : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-       m_sPlayerOne.value = turnManager.getHealthP1(); 
-       m_sPlayerTwo.value = turnManager.getHealthP2();
 	}
+
+    public void UpdateHealth()
+    {
+        m_sPlayerOne.value = turnManager.getHealthP1();
+        m_sPlayerTwo.value = turnManager.getHealthP2();
+    }
 }
