@@ -32,11 +32,11 @@ public class TurnManager : MonoBehaviour {
         if (timerBetweenTurns > 0)
         {
             //TODO: add the code for displaying the 'animations'
-            if ((timerBetweenTurns < TIME_BETWEEN_TURNS / 4) && (lastTookDamage == 1))
+            if ((timerBetweenTurns < TIME_BETWEEN_TURNS * 0.75) && (lastTookDamage == 1))
             {
                 Player1.GetComponent<SpriteRenderer>().sprite = spritesP1[(int)PlayerChoice.ITEM_COUNT];
             }
-            if ((timerBetweenTurns < TIME_BETWEEN_TURNS / 4) && (lastTookDamage == 2))
+            if ((timerBetweenTurns < TIME_BETWEEN_TURNS * 0.75) && (lastTookDamage == 2))
             {
                 Player2.GetComponent<SpriteRenderer>().sprite = spritesP2[(int)PlayerChoice.ITEM_COUNT];
             }
