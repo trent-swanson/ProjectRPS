@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour {
 
@@ -51,9 +50,9 @@ public class TurnManager : MonoBehaviour {
 
                 //set the player sprites to the players next actions
                 if (Player1 != null)
-                    Player1.GetComponent<Image>().sprite = spritesP1[playerOneNextAction];
+                    Player1.GetComponent<SpriteRenderer>().sprite  = spritesP1[playerOneNextAction];
                 if (Player2 != null)
-                    Player1.GetComponent<Image>().sprite = spritesP1[playerOneNextAction];
+                    Player1.GetComponent<SpriteRenderer>().sprite  = spritesP1[playerOneNextAction];
 
                 //reset the playes last actions and store their previous actions
                 playerOneLastActions.Add(playerOneNextAction);
@@ -71,12 +70,12 @@ public class TurnManager : MonoBehaviour {
             {
                 //reset the player sprites to the idle
                 if (Player1 != null) {
-                    if (Player1.GetComponent<Image>().sprite != null)
-                        Player1.GetComponent<Image>().sprite = spritesP1[(int)PlayerChoice.NOTHING];
+                    if (Player1.GetComponent<SpriteRenderer>().sprite  != null)
+                        Player1.GetComponent<SpriteRenderer>().sprite  = spritesP1[(int)PlayerChoice.NOTHING];
                 }
-                if (Player1 != null) {
-                    if (Player2.GetComponent<Image>().sprite != null)
-                        Player2.GetComponent<Image>().sprite = spritesP2[(int)PlayerChoice.NOTHING];
+                if (Player2 != null) {
+                    if (Player2.GetComponent<SpriteRenderer>().sprite  != null)
+                        Player2.GetComponent<SpriteRenderer>().sprite  = spritesP2[(int)PlayerChoice.NOTHING];
                 }
                 //right at the start of the turn display the player action wheel
                 if (turnTimer == MAX_TURN_TIME) {
