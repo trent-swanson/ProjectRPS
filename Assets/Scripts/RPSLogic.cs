@@ -19,7 +19,9 @@ public static class RPSLogic
 
 
 
-    // public static int ReturnOutcome
+	public static int winner;
+
+	// public static int ReturnOutcome
     //
     // parametres:
     // int playerOneAction is going to be 0-4 inclusive.
