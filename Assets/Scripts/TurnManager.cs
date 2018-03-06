@@ -36,12 +36,22 @@ public class TurnManager : MonoBehaviour {
             if ((timerBetweenTurns < TIME_BETWEEN_TURNS * 0.75) && (lastTookDamage == 1))
             {
                 Player1.GetComponent<SpriteRenderer>().sprite = spritesP1[(int)PlayerChoice.ITEM_COUNT];
-                sound.Play();
+				if (!sound.isPlaying && !hitSound) {
+					hitSound = true;
+					sound.loop = false;
+					sound.PlayOneShot (sound.clip);
+					Debug.Log ("hit");
+				}
             }
             if ((timerBetweenTurns < TIME_BETWEEN_TURNS * 0.75) && (lastTookDamage == 2))
             {
                 Player2.GetComponent<SpriteRenderer>().sprite = spritesP2[(int)PlayerChoice.ITEM_COUNT];
-                sound.Play();
+				if (!sound.isPlaying && !hitSound) {
+					hitSound = true;
+					sound.loop = false;
+					sound.PlayOneShot (sound.clip);
+					Debug.Log ("hit 2");
+				}
             }
             timerBetweenTurns -= Time.deltaTime;
             turnTimer = MAX_TURN_TIME;
@@ -91,6 +101,7 @@ public class TurnManager : MonoBehaviour {
                 playerTwoNextAction = (int)PlayerChoice.NOTHING;
                 //set the timer for the 'animations' 
                 timerBetweenTurns = TIME_BETWEEN_TURNS;
+				hitSound = false;
                 //update the visible list of the actions last peformed by the 
                 //two players once they've selected their moves for the current turn
                 if(canvas != null)
@@ -232,4 +243,5 @@ public class TurnManager : MonoBehaviour {
     private int playerTwoHealth;
     private int turnNumber;
     private int lastTookDamage;
+	private bool hitSound = false;
 }
