@@ -51,7 +51,7 @@ public class TurnManager : MonoBehaviour {
             if (turnTimer < 0 || (playerOneNextAction != (int)PlayerChoice.NOTHING && playerTwoNextAction != (int)PlayerChoice.NOTHING))
             {
                 turnTimer = 0;
-                canvas.GetComponent<UIActionHistory>()tickTock.Stop();
+                canvas.GetComponent<UIActionHistory>().tickTock.Stop();
                 //call the RPSlogics functionality to get what happened
                 if ((RPSLogic.ReturnOutcome(playerOneNextAction, playerTwoNextAction)) == 2)
                 {
