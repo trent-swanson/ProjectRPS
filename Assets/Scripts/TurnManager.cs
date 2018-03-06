@@ -52,7 +52,7 @@ public class TurnManager : MonoBehaviour {
                 if (Player1 != null)
                     Player1.GetComponent<SpriteRenderer>().sprite  = spritesP1[playerOneNextAction];
                 if (Player2 != null)
-                    Player1.GetComponent<SpriteRenderer>().sprite  = spritesP1[playerOneNextAction];
+                    Player2.GetComponent<SpriteRenderer>().sprite  = spritesP2[playerOneNextAction];
 
                 //reset the playes last actions and store their previous actions
                 playerOneLastActions.Add(playerOneNextAction);
