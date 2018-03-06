@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4696639616712732}
   - component: {fileID: 114924673568345780}
+  - component: {fileID: 114532719074852646}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -40,6 +41,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114532719074852646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1462924736495506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e677783ba16be649bdf95e9c43e0cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_sPlayerOne: {fileID: 0}
+  m_sPlayerTwo: {fileID: 0}
 --- !u!114 &114924673568345780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52,8 +66,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
-  MAX_TURN_TIME: 10
-  TIME_BETWEEN_TURNS: 10
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  spritesP1:
+  - {fileID: 21300000, guid: 00565209efd724d4482ceea146484767, type: 3}
+  - {fileID: 21300000, guid: a9af4cf6ee9b3c440ae4c4e75e061255, type: 3}
+  - {fileID: 21300000, guid: 51a2ef33d5764ec4c9694da0030bbd5e, type: 3}
+  - {fileID: 21300000, guid: 10b60c189f6827548b32266897e3e63b, type: 3}
+  - {fileID: 21300000, guid: a99165340e593ac4faabce0b248ef48f, type: 3}
+  spritesP2:
+  - {fileID: 21300000, guid: b68257d3e850ee64aad652e20576149b, type: 3}
+  - {fileID: 21300000, guid: 67752700b516aa94f9e1f3aa9caa38cd, type: 3}
+  - {fileID: 21300000, guid: 866d1db87d30a80449c7ec4f88307ba4, type: 3}
+  - {fileID: 21300000, guid: d06ce2ea141c5de4da78483993db9ea3, type: 3}
+  - {fileID: 21300000, guid: 2a8a26bd30b954240bf0c106e04437c6, type: 3}
+  MAX_TURN_TIME: 11
+  TIME_BETWEEN_TURNS: 4
   MAX_PLAYER_HEALTH: 4
   playerOneNextAction: 0
   playerTwoNextAction: 0

@@ -12,57 +12,68 @@ public class UIActionHistory : MonoBehaviour {
 	public GameObject p2Options;
 	public GameObject timerObject;
 	public Sprite[] timerSprites;
-	float timer;
 	int currentTime;
+	int savedTime;
+	int activeHistoryP1;
+	int activeHistoryP2;
 
 	void Start() {
 		turnManager = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TurnManager> ();
-		timer = 1;
 		currentTime = Mathf.RoundToInt(turnManager.getCurrentTurnTime());
-		OpenPlayerOptions ();
+		savedTime = currentTime;
+		activeHistoryP1 = 0;
+		activeHistoryP2 = 0;
 	}
 
 	void Update() {
-		timer -= Time.deltaTime;
-		if (timer <= 0) {
-			timer = 1;
-			currentTime--;
+		currentTime = (int)turnManager.getCurrentTurnTime ();
+		if (currentTime < 11) {
 			timerObject.GetComponent<Image> ().sprite = timerSprites [currentTime];
-		}
-		if (currentTime <= 0) {
-			currentTime = Mathf.RoundToInt(turnManager.getCurrentTurnTime() + 1);
 		}
 	}
 
 	public void UpdateActionHistory() {
 		ClosePlayerOptions ();
-		for (int i = 0; i < turnManager.playerOneLastActions.Count; i++) {
-			p1Actions [i].SetActive (true);
+
+		if (activeHistoryP1 < 5) {
+			p1Actions [activeHistoryP1].SetActive (true);
+			activeHistoryP1++;
+		}
+		if (activeHistoryP2 < 5) {
+			p2Actions [activeHistoryP2].SetActive (true);
+			activeHistoryP2++;
+		}
+
+		int tempCountP1 = activeHistoryP1;
+		int tempCountP2 = activeHistoryP2;
+
+		for (int i = turnManager.playerOneLastActions.Count; i > activeHistoryP1; i--) {
+			activeHistoryP1--;
 			if (turnManager.playerOneLastActions[i] == 0) {
-				p1Actions [i].transform.GetChild (0).GetComponent<Text>().text = "Attack";
+				p1Actions [activeHistoryP1].transform.GetChild (0).GetComponent<Text>().text = "Attack";
 			} else if (turnManager.playerOneLastActions[i] == 1) {
-				p1Actions [i].transform.GetChild (0).GetComponent<Text>().text = "Lunge";
+				p1Actions [activeHistoryP1].transform.GetChild (0).GetComponent<Text>().text = "Lunge";
 			} else if (turnManager.playerOneLastActions[i] == 2) {
-				p1Actions [i].transform.GetChild (0).GetComponent<Text>().text = "Parry";
+				p1Actions [activeHistoryP1].transform.GetChild (0).GetComponent<Text>().text = "Parry";
 			} else if (turnManager.playerOneLastActions[i] == 3) {
-				p1Actions [i].transform.GetChild (0).GetComponent<Text>().text = "Block";
+				p1Actions [activeHistoryP1].transform.GetChild (0).GetComponent<Text>().text = "Block";
 			} else if (turnManager.playerOneLastActions[i] == 4) {
-				p1Actions [i].transform.GetChild (0).GetComponent<Text>().text = "Nothing";
+				p1Actions [activeHistoryP1].transform.GetChild (0).GetComponent<Text>().text = "Nothing";
 			}
 		}
 
-		for (int i = 0; i < turnManager.playerTwoLastActions.Count; i++) {
-			p2Actions [i].SetActive (true);
+		for (int i = turnManager.playerTwoLastActions.Count; i > activeHistoryP2; i--) {
+			activeHistoryP2--;
 			if (turnManager.playerTwoLastActions[i] == 0) {
-				p2Actions [i].transform.GetChild (0).GetComponent<Text>().text = "Attack";
+				p2Actions [activeHistoryP2].transform.GetChild (0).GetComponent<Text>().text = "Attack";
 			} else if (turnManager.playerTwoLastActions[i] == 1) {
-				p2Actions [i].transform.GetChild (0).GetComponent<Text>().text = "Lunge";
+				p2Actions [activeHistoryP2].transform.GetChild (0).GetComponent<Text>().text = "Lunge";
 			} else if (turnManager.playerTwoLastActions[i] == 2) {
-				p2Actions [i].transform.GetChild (0).GetComponent<Text>().text = "Parry";
+				p2Actions [activeHistoryP2].transform.GetChild (0).GetComponent<Text>().text = "Parry";
 			} else if (turnManager.playerTwoLastActions[i] == 3) {
-				p2Actions [i].transform.GetChild (0).GetComponent<Text>().text = "Block";
+				p2Actions [activeHistoryP2].transform.GetChild (0).GetComponent<Text>().text = "Block";
 			} else if (turnManager.playerTwoLastActions[i] == 4) {
-				p2Actions [i].transform.GetChild (0).GetComponent<Text>().text = "Nothing";
+				p2Actions [activeHistoryP2].transform.GetChild (0).GetComponent<Text>().text = "Nothing";
 			}
 		}
 	}
