@@ -28,7 +28,7 @@ public class UIActionHistory : MonoBehaviour {
 
 	void Update() {
 		currentTime = (int)turnManager.getCurrentTurnTime ();
-		if (currentTime == 11) {
+		if (currentTime == 10) {
 			if (!dongPlayed) {
 				dongPlayed = true;
 				timerAudio.loop = false;
