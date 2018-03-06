@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour {
 
@@ -47,6 +48,13 @@ public class TurnManager : MonoBehaviour {
                 {
                     playerOneHealth -= 1;
                 }
+
+                //set the player sprites to the players next actions
+                if (Player1 != null)
+                    Player1.GetComponent<Image>().sprite = spritesP1[playerOneNextAction];
+                if (Player2 != null)
+                    Player1.GetComponent<Image>().sprite = spritesP1[playerOneNextAction];
+
                 //reset the playes last actions and store their previous actions
                 playerOneLastActions.Add(playerOneNextAction);
                 playerOneNextAction = (int)PlayerChoice.NOTHING;
@@ -60,9 +68,18 @@ public class TurnManager : MonoBehaviour {
                     canvas.GetComponent<UIActionHistory>().UpdateActionHistory();
             }
             else
-            { 
+            {
+                //reset the player sprites to the idle
+                if (Player1 != null) {
+                    if (Player1.GetComponent<Image>().sprite != spritesP1[(int)PlayerChoice.NOTHING])
+                        Player1.GetComponent<Image>().sprite = spritesP1[(int)PlayerChoice.NOTHING];
+                }
+                if (Player1 != null) {
+                    if (Player2.GetComponent<Image>().sprite != spritesP2[(int)PlayerChoice.NOTHING])
+                        Player2.GetComponent<Image>().sprite = spritesP2[(int)PlayerChoice.NOTHING];
+                }
                 //right at the start of the turn display the player action wheel
-                if(turnTimer == MAX_TURN_TIME) {
+                if (turnTimer == MAX_TURN_TIME) {
                     if (canvas != null)
                         canvas.GetComponent<UIActionHistory>().OpenPlayerOptions();
                 }
@@ -139,6 +156,10 @@ public class TurnManager : MonoBehaviour {
     public float getCurrentTurnTime() { return turnTimer; }
 
     public Canvas canvas;
+    public GameObject Player1;
+    public GameObject Player2;
+    public Sprite[] spritesP1;
+    public Sprite[] spritesP2;
     public float MAX_TURN_TIME = 10;
     public float TIME_BETWEEN_TURNS;
     public int MAX_PLAYER_HEALTH;
