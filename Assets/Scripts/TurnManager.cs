@@ -39,12 +39,12 @@ public class TurnManager : MonoBehaviour {
             {
                 turnTimer = 0;
                 //call the RPSlogics functionality to get what happened
-                if ((RPSLogic.ReturnOutcome(playerOneNextAction, playerTwoNextAction)) == 1)
+                if ((RPSLogic.ReturnOutcome(playerOneNextAction, playerTwoNextAction)) == 2)
                 {
                     playerTwoHealth -= 1;
                     transform.GetComponent<UIHealthBar>().UpdateHealth();
                 }
-                else if ((RPSLogic.ReturnOutcome(playerOneNextAction, playerTwoNextAction)) == 2)
+                else if ((RPSLogic.ReturnOutcome(playerOneNextAction, playerTwoNextAction)) == 1)
                 {
                     playerOneHealth -= 1;
                     transform.GetComponent<UIHealthBar>().UpdateHealth();
