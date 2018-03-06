@@ -12,8 +12,8 @@ public static class RPSLogic
     public static int[,] OutCome = new int[5,5] { 
                                                   {0,2,1,0,2}, 
                                                   {1,0,2,0,2},
-                                                  {0,0,0,0,0},
                                                   {2,1,0,0,2},
+                                                  {0,0,0,0,0},
                                                   {1,1,1,0,0}
                                                 };
 
