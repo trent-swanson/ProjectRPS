@@ -42,17 +42,19 @@ public class TurnManager : MonoBehaviour {
                 if ((RPSLogic.ReturnOutcome(playerOneNextAction, playerTwoNextAction)) == 1)
                 {
                     playerTwoHealth -= 1;
+                    transform.GetComponent<UIHealthBar>().UpdateHealth();
                 }
                 else if ((RPSLogic.ReturnOutcome(playerOneNextAction, playerTwoNextAction)) == 2)
                 {
                     playerOneHealth -= 1;
+                    transform.GetComponent<UIHealthBar>().UpdateHealth();
                 }
 
                 //set the player sprites to the players next actions
                 if (Player1 != null)
                     Player1.GetComponent<SpriteRenderer>().sprite  = spritesP1[playerOneNextAction];
                 if (Player2 != null)
-                    Player2.GetComponent<SpriteRenderer>().sprite  = spritesP2[playerOneNextAction];
+                    Player2.GetComponent<SpriteRenderer>().sprite  = spritesP2[playerTwoNextAction];
 
                 //reset the playes last actions and store their previous actions
                 playerOneLastActions.Add(playerOneNextAction);
