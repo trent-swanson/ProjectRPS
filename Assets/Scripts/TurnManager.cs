@@ -28,6 +28,18 @@ public class TurnManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        // do the quote animations unquote
+        if (timerBetweenTurns > 0) {
+            //TODO: add the code for displaying the 'animations'
+            if ((timerBetweenTurns < MAX_TURN_TIME/2) && (lastTookDamage == 1)) {
+                Player1.GetComponent<SpriteRenderer>().sprite = spritesP1[(int)PlayerChoice.ITEM_COUNT];
+            }
+            if ((timerBetweenTurns < MAX_TURN_TIME / 2) && (lastTookDamage == 2)) {
+                Player2.GetComponent<SpriteRenderer>().sprite = spritesP2[(int)PlayerChoice.ITEM_COUNT];
+            }
+            timerBetweenTurns -= Time.deltaTime;
+            turnTimer = MAX_TURN_TIME;
+        }
         //check if either player has zero health
         if (playerOneHealth < 1) {
             //set the winner to player 2
@@ -40,28 +52,22 @@ public class TurnManager : MonoBehaviour {
             RPSLogic.winner = 1;
             //change scene
         }
-
-        if (timerBetweenTurns > 0) {
-            //TODO: add the code for displaying the 'animations
-            //do the stuff 'animation' stuff
-            timerBetweenTurns -= Time.deltaTime;
-            turnTimer = MAX_TURN_TIME;
-        }
         else {
-            if (turnTimer < 0 || (playerOneNextAction != (int)PlayerChoice.NOTHING && playerTwoNextAction != (int)PlayerChoice.NOTHING))
-            {
+            if (turnTimer < 0 || (playerOneNextAction != (int)PlayerChoice.NOTHING && playerTwoNextAction != (int)PlayerChoice.NOTHING)) {
                 turnTimer = 0;
-                canvas.GetComponent<UIActionHistory>().tickTock.Stop();
                 //call the RPSlogics functionality to get what happened
-                if ((RPSLogic.ReturnOutcome(playerOneNextAction, playerTwoNextAction)) == 2)
-                {
+                if ((RPSLogic.ReturnOutcome(playerOneNextAction, playerTwoNextAction)) == 2) {
                     playerTwoHealth -= 1;
                     transform.GetComponent<UIHealthBar>().UpdateHealth();
+                    lastTookDamage = 2;
                 }
-                else if ((RPSLogic.ReturnOutcome(playerOneNextAction, playerTwoNextAction)) == 1)
-                {
+                else if ((RPSLogic.ReturnOutcome(playerOneNextAction, playerTwoNextAction)) == 1) {
                     playerOneHealth -= 1;
                     transform.GetComponent<UIHealthBar>().UpdateHealth();
+                    lastTookDamage = 1;
+                }
+                else {
+                    lastTookDamage = 0;
                 }
 
                 //set the player sprites to the players next actions
@@ -216,4 +222,5 @@ public class TurnManager : MonoBehaviour {
     private int playerOneHealth;
     private int playerTwoHealth;
     private int turnNumber;
+    private int lastTookDamage;
 }
