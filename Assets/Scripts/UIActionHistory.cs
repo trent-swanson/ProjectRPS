@@ -10,6 +10,7 @@ public class UIActionHistory : MonoBehaviour {
 	public GameObject[] p2Actions;
 	public GameObject p1Options;
 	public GameObject p2Options;
+	public GameObject infoPanel;
 	public GameObject timerObject;
 	public Sprite[] timerSprites;
 	public Sprite[] historySprites;
@@ -76,6 +77,7 @@ public class UIActionHistory : MonoBehaviour {
 	public void OpenPlayerOptions() {
 		p1Options.SetActive (true);
 		p2Options.SetActive (true);
+		infoPanel.SetActive (true);
 		if (turnManager.playerOneLastActions.Count > 0) {
 			LastActionChosen ();
 		}
@@ -83,6 +85,7 @@ public class UIActionHistory : MonoBehaviour {
 	public void ClosePlayerOptions() {
 		p1Options.SetActive (false);
 		p2Options.SetActive (false);
+		infoPanel.SetActive (false);
 	}
 	public void ClosePlayerOptions(int playerOptions) {
 		if (playerOptions == 1) {
