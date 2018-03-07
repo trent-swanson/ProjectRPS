@@ -29,6 +29,9 @@ public class UIActionHistory : MonoBehaviour {
 
 	void Update() {
 		currentTime = (int)turnManager.getCurrentTurnTime ();
+		if (currentTime == 11) {
+			timerAudio.loop = false;
+		}
 		if (currentTime < 11) {
 			if (!dongPlayed && currentTime == 0) {
 				dongPlayed = true;
@@ -38,7 +41,7 @@ public class UIActionHistory : MonoBehaviour {
 				timerAudio.Play ();
 			} else if (currentTime == 1) {
 				dongPlayed = false;
-			} else if (!timerAudio.isPlaying && currentTime != 0) {
+			} else if (!timerAudio.isPlaying && currentTime != 0 && currentTime != 11) {
 				timerAudio.loop = true;
 				timerAudio.volume = 0.35f;
 				timerAudio.clip = tickTock;
